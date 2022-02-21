@@ -1,5 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
-    <h1>Benvenuto nell'area protetta</h1>
+    <h1>{{ $user->name }} benvenuto nell'area protetta</h1>
 @endsection
