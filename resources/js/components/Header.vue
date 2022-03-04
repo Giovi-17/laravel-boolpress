@@ -38,7 +38,15 @@ export default {
                 },
                 {
                     name: 'latest-news',
-                    label: 'Latest News'
+                    label: 'Ultime News'
+                },
+                {
+                    name: 'tags-list',
+                    label: 'Tags'
+                },
+                                {
+                    name: 'newsletter',
+                    label: 'Newsletter'
                 },
             ],
         };
