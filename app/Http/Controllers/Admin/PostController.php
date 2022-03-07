@@ -8,6 +8,9 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewPostAdminNotification;
 
 class PostController extends Controller
 {
@@ -62,13 +65,23 @@ class PostController extends Controller
         $new_post = new Post();
         $new_post->fill($form_data);
         $new_post->slug = $this->getUniqueSlugFromTitle($form_data['title']);
+        
+        if(isset($form_data['image'])) {
+
+            $img_path = Storage::put('post_covers', $form_data['image']);
+            $new_post->cover = $img_path;
+        }
+
         $new_post->save();
 
         if(isset($form_data['tags'])) {
             $new_post->tags()->sync($form_data['tags']);
         }
 
+        Mail::to('editor@boolpress.it')->send(new NewPostAdminNotification($new_post));
+
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
+    
     }
 
     /**

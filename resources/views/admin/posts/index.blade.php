@@ -14,6 +14,10 @@
 
                         <div class="card mt-2">
 
+                            @if ($post->cover)
+                                <img src="{{ asset('storage/' . $post->cover) }}" class="card-img-top" alt="{{ $post->title }}">
+                            @endif
+                            
                             <div class="card-body">
 
                                 <h5 class="card-title">{{ $post->title }}</h5>

@@ -53,6 +53,11 @@
             <textarea class="form-control" name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
         </div>
 
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" id="image" name="image">
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 </section>
