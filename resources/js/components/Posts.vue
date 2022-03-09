@@ -7,7 +7,7 @@
                 <!-- Single post card -->
                 <div v-for="post in posts" :key="post.id" class="col">
                     <div class="card my-2">
-                        <!-- <img src="..." class="card-img-top" alt="..."> -->
+                        <img v-if="post.cover" :src="post.cover" class="card-img-top" alt="post.title">
                         <div class="card-body">
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-text">{{ truncateText(post.content, 50) }}</p>
@@ -27,7 +27,7 @@
                 <ul class="pagination">
                     <!-- Previous link -->
                     <li class="page-item" :class="{ 'disabled': currentPage == 1 }">
-                        <a @click="getPosts(currentPage - 1)" class="page-link" href="#">Precedente</a>
+                        <a @click="getPosts(currentPage - 1)" class="page-link" href="#">Previous</a>
                     </li>
 
                     <!-- Pages link -->
@@ -37,7 +37,7 @@
 
                     <!-- Next link -->
                     <li class="page-item" :class="{ 'disabled': currentPage == lastPage }">
-                        <a @click="getPosts(currentPage + 1)" class="page-link" href="#">Successivo</a>
+                        <a @click="getPosts(currentPage + 1)" class="page-link" href="#">Next</a>
                     </li>
                 </ul>
             </nav>

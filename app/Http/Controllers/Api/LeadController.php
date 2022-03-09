@@ -13,7 +13,8 @@ class LeadController extends Controller
 {
     public function store(Request $request) {
         $data = $request->all();
-        
+     
+        // Validare il $request->all in base all'array di regole
         $validator = Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|max:255',

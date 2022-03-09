@@ -44,9 +44,13 @@ export default {
                     name: 'tags-list',
                     label: 'Tags'
                 },
-                                {
+                {
                     name: 'newsletter',
                     label: 'Newsletter'
+                },
+                {
+                    name: 'contacts',
+                    label: 'Contattaci'
                 },
             ],
         };

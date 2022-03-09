@@ -3,7 +3,7 @@
         <div class="container">
             <h1>{{ post.title }}</h1>
 
-            <div v-if="post.category">Category: {{ post.category.name }}</div>
+            <div v-if="post.category">Categoria: {{ post.category.name }}</div>
 
             <div v-if="post.tags.length > 0">
                 <router-link 
@@ -15,6 +15,8 @@
                     {{ tag.name }}
                 </router-link>
             </div>
+
+            <img v-if="post.cover" :src="post.cover" class="card-img-top" alt="post.title">
 
             <p>{{ post.content }}</p>
         </div>

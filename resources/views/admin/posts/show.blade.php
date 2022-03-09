@@ -16,6 +16,14 @@
             @endforelse
         </div>
 
+        {{-- @if($post->tags->isNotEmpty())
+            <div class="mb-2"><strong>Tags:</strong>
+                @foreach ($post->tags as $tag)
+                    {{ $tag->name }}{{ $loop->last ? '' : ', ' }}
+                @endforeach
+            </div>
+        @endif --}}
+
         @if ($post->cover)
             <div>
                 <img src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}">

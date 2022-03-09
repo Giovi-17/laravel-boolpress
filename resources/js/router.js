@@ -11,6 +11,7 @@ import PostDetails from './pages/PostDetails.vue';
 import TagDetails from './pages/TagDetails.vue';
 import TagsList from './pages/TagsList.vue';
 import Newsletter from './pages/Newsletter.vue';
+import Contacts from './pages/Contacts.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = new VueRouter({
@@ -55,6 +56,11 @@ const router = new VueRouter({
             path: "/newsletter",
             name: "newsletter",
             component: Newsletter
+        },
+        {
+            path: "/contacts",
+            name: "contacts",
+            component: Contacts
         },
         {
             path: "/*",

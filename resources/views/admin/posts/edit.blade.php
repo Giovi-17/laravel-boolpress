@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.posts.update', ['post' => $post->id] ) }}" method="post">
+        <form action="{{ route('admin.posts.update', ['post' => $post->id] ) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -35,23 +35,22 @@
 
             <div class="mb-3">
                 <h4>Tags</h4>
-    
+
                 @foreach ($tags as $tag)
-                <div class="form-check">
-                    @if ($errors->any())
-                        {{-- Se ci sono errori di validazione, decido se mettere checked o meno in base a old() --}}
-                        <input {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
-                    @else
-                        {{-- Atrimenti se non ci sono errori di validazione, decido se mettere checked o meno in base a $post->tags->contains --}}
-                        <input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
-                    @endif
-                    
-                    <label class="form-check-label" for="tag-{{ $tag->id }}">
-                    {{ $tag->name }}
-                    </label>
-                </div>
+                    <div class="form-check">
+                        @if ($errors->any())
+                            {{-- Se ci sono errori di validazione, decido se mettere checked o meno in base a old() --}}
+                            <input {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }} class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                        @else
+                            {{-- Atrimenti se non ci sono errori di validazione, decido se mettere checked o meno in base a $post->tags->contains --}}
+                            <input {{ $post->tags->contains($tag) ? 'checked' : '' }} class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag-{{ $tag->id }}">
+                        @endif
+                        
+                        <label class="form-check-label" for="tag-{{ $tag->id }}">
+                        {{ $tag->name }}
+                        </label>
+                    </div>
                 @endforeach
-    
             </div>
 
             <div class="mb-3">
@@ -69,7 +68,7 @@
                 </div>
             @endif
 
-            <button type="submit" class="btn btn-primary">Salva</button>
+            <button type="submit" class="btn btn-primary">Salva le modifiche</button>
           </form>
     </section>
 @endsection
